@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/v1/tasks")
 @RequiredArgsConstructor
@@ -34,18 +34,23 @@ public class TaskController {
         Task task = taskMapper.mapToTask(taskDto);
         service.saveTask(task);
     }
-    @GetMapping(value = {"taskId"})
+    @GetMapping(value = "{taskId}")
     public ResponseEntity<TaskDto> getTask(@PathVariable Long taskId)throws TaskNotFoundException {
 
 
         return new ResponseEntity<>(taskMapper.mapToTaskDto(
-                service.getTask(taskId)), HttpStatus.OK);
+                service.getTask(taskId).orElseThrow()), HttpStatus.OK);
 
     }
     @DeleteMapping(value = "taskId")
-    public void deleteTask( Long id) {
-        service.deleteTask(id);
+    public void deleteTask( @PathVariable Long taskId) {
+        service.deleteTask(taskId);
 
+    }
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateTask(@RequestBody TaskDto taskDto) {
+        Task task = taskMapper.mapToTask(taskDto);
+        service.saveTask(task);
     }
 
 }
