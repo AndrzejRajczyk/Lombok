@@ -47,7 +47,9 @@ public class TaskController {
         service.deleteTask(taskId);
 
     }
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateTask(@RequestBody TaskDto taskDto) {
         Task task = taskMapper.mapToTask(taskDto);
         service.saveTask(task);

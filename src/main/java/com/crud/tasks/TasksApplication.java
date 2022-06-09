@@ -5,8 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TasksApplication {
-
+//public class TasksApplication extends SpringBootServletInitializer {
+public class TasksApplication{
     public static void main(String[] args) {
         TaskDto taskDto = new TaskDto(
                 (long)1,
@@ -20,5 +20,9 @@ public class TasksApplication {
         System.out.println(id + " " + title + " " + content);
         SpringApplication.run(TasksApplication.class, args);
     }
+  //  @Override
+   // protected SpringApplicationBuilder configure (SpringApplicationBuilder application){
+  //      return application.sources(TasksApplication.class);
+ //   }
 
 }
