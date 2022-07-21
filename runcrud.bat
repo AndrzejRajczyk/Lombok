@@ -9,11 +9,10 @@ goto fail
 del build\libs\crud.war
 ren build\libs\task-0.0.1-SNAPSHOT-plain.war crud.war
 if "%ERRORLEVEL%" == "0" goto stoptomcat
-echo Cannot rename file
-goto fail
+echo Cannot rename file goto fail
 
 :stoptomcat
-call %CATALINA_HOME%\bin\shutdown.bat
+:: call %CATALINA_HOME%\bin\shutdown.bat
 
 :copyfile
 copy build\libs\crud.war %CATALINA_HOME%\webapps

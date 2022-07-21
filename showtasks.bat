@@ -1,14 +1,15 @@
 
 echo "Start, running runcrud.bat"
 call c:\task\runcrud.bat
-if "%ERRORLEVEL%" == "0" goto runcrudfails
-if "%ERRORLEVEL%" != "0" goto firefox
+if "%ERRORLEVEL%" == "1" goto runcrudfails
+goto fire
 
 
 
-:firefox
+:fire
 echo starting Firefox
-start C:\"Program Files"\"Mozilla Firefox"\firefox.exe  -- new window  "http://localhost:8080/crud/v1/tasks/task"
+start "" "http://localhost:8080/crud/v1/tasks"
+:: start C:\"Program Files"\"Mozilla Firefox"\firefox.exe  -- new window  "http://localhost:8080/crud/v1/tasks"
 if "%ERRORLEVEL%" == "0" goto firefoxfails
 
 :runcrudfails
