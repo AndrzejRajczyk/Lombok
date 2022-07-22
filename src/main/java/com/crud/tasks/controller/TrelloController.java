@@ -26,7 +26,7 @@ public class TrelloController {
         trelloBoards.forEach(trelloBoardDto -> {
              String id = trelloBoardDto.getId();
              String name = trelloBoardDto.getName();
-            if (name=="Kodilla"&id!=null){
+            if (name.contains("Kodilla") && id!=null){
             System.out.println(id + " " + name);
             }
             else {
