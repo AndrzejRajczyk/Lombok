@@ -9,7 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class TasksApplication extends SpringBootServletInitializer {
     // public class TasksApplication{
     public static void main(String[] args) {
-
+        System.out.println("start aplikacji");
 
         TaskDto taskDto = new TaskDto( 1, "Test title", "I want to be a coder!");
 
